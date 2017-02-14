@@ -35,7 +35,9 @@ Template.list.helpers({
     };
   }
 });
-
+Accounts.ui.config({
+passwordSignupFields: 'USERNAME_ONLY'
+});
 
 //Events
 

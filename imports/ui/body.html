@@ -1,32 +1,47 @@
 <template name="home">
     {{> menuBar}}
-     <div class="container">
-         <header>
-             <h1>Enter company name</h1>
-         </header>
-         <ul>
-             <form class="new-name">
-                 <input type="text" name="text" placeholder="Type to enter new company" />
-             </form>
-             <br><br>
-			 <p>Ex.- facebook.com</p>
-             {{> flashMessages}}
-
-         </ul>
-     </div>
- </template>
+    <div class="container">
+        {{#if currentUser }}
+            <header>
+                <h1>Enter company name</h1>
+            </header>
+        {{else}}
+            <header>
+                <h1>Please login</h1>
+            </header>
+        {{/if}}
+        {{#if currentUser }}
+            <ul>
+                <form class="new-name">
+                    <input type="text" name="text" placeholder="Type to enter new company" />
+                </form>
+                <br><br>
+                <p>Ex.- facebook.com</p>
+                {{> flashMessages}}
+            </ul>
+        {{/if}}
+    </div>
+</template>
 
 <template name="list">
     {{> menuBar}}
-     <div class="container">
-         <header>
-             <h1>Companies listing</h1>
-         </header>
-         <ul>
-             {{> reactiveTable settings=settings}}
-         </ul>
-     </div>
- </template>
+    <div class="container">
+        {{#if currentUser }}
+            <header>
+                <h1>Companies listing</h1>
+            </header>
+        {{else}}
+            <header>
+                <h1>Please login</h1>
+            </header>
+        {{/if}}
+        {{#if currentUser }}
+            <ul>
+                {{> reactiveTable settings=settings}}
+            </ul>
+        {{/if}}
+    </div>
+</template>
 
 
 <template name="menuBar">
@@ -38,6 +53,7 @@
             <ul class="nav navbar-nav">
                 <li id="home" class="active">Home</li>
                 <li id="list">Company List</li>
+                <li>{{> loginButtons}}</li>
             </ul>
         </div>
     </nav>

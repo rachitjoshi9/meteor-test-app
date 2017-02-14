@@ -26,3 +26,6 @@ aslagle:reactive-table
 mrt:flash-messages
 http
 percolate:synced-cron
+accounts-password
+accounts-ui
+accounts-google
